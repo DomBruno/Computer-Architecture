@@ -19,7 +19,9 @@ class CPU:
             0b10000010: self.LDI,
             0b01000111: self.PRN,
             0b10100010: self.MULT,  
-            0b00000001: self.HLT
+            0b00000001: self.HLT,
+            0b01000101: self.PUSH,
+            0b01000110: self.POP
         }
         if func in branch_table:
             branch_table[func]()
