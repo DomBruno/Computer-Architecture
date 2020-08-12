@@ -21,7 +21,9 @@ class CPU:
             0b10100010: self.MULT,  
             0b00000001: self.HLT,
             0b01000101: self.PUSH,
-            0b01000110: self.POP
+            0b01000110: self.POP,
+            0b01010000: self.CALL,
+            0b00010001: self.RET
         }
         if func in branch_table:
             branch_table[func]()
