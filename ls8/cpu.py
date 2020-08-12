@@ -66,6 +66,11 @@ class CPU:
         self.sp +=1
         self.pc += 2
 
+    def CALL(self):
+        new_pc = self.reg[self.ram_read(self.pc + 1)]
+        self.PUSH(self.pc + 2)
+        self.pc = new_pc
+
     def RET(self):
         self.pc = self.ram_read(self.reg[self.sp])
         self.reg[self.sp] += 1
