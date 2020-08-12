@@ -66,6 +66,10 @@ class CPU:
         self.sp +=1
         self.pc += 2
 
+    def RET(self):
+        self.pc = self.ram_read(self.reg[self.sp])
+        self.reg[self.sp] += 1
+
     def ram_read(self, MAR):
         return self.ram[MAR]
 
