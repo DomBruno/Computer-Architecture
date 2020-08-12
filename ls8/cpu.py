@@ -48,6 +48,22 @@ class CPU:
         self.alu('MULT', self.pc+1, self.pc+2)
         self.pc += 3
 
+    def PUSH(self, value = None):
+        #decrement SP
+        self.sp -= 1
+        if not value:
+            value = self.reg[self.ram_read(self.pc + 1)]
+        self.ram_write(value, self.reg[self.sp])
+        self.pc += 2
+
+    def POP(self):
+        value = self.ram[self.sp]
+        #go to next in ram
+        self.reg[self.ram[self.pc + 1]] = value
+        #increment sp
+        self.sp +=1
+        self.pc += 2
+
     def ram_read(self, MAR):
         return self.ram[MAR]
 
